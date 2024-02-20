@@ -1,5 +1,6 @@
 // Import necessary modules
 const express = require("express")
+const blogRoute = require("./routes/blogRoutes")
 const mongoose = require("mongoose")
 
 // Create an Express application
@@ -13,6 +14,9 @@ const PORT = process.env.PORT || 1000
 
 // Middleware: Enable parsing of JSON data in requests
 app.use(express.json())
+
+// Middleware: Enable Route 
+app.use("/api/blogs", blogRoute)
 
 // Connect to the MongoDB database
 mongoose.connect(URI, {
