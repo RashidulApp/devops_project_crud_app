@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="5" failures="0" errors="0" time="3.378">
-  <testsuite name="Blogs" errors="0" failures="0" skipped="0" timestamp="2024-02-21T13:04:57" time="2.406" tests="5">
-    <testcase classname="Blogs GET /api/blogs should GET all the blogs" name="Blogs GET /api/blogs should GET all the blogs" time="0.251">
+<testsuites name="jest tests" tests="5" failures="0" errors="0" time="3.182">
+  <testsuite name="Blogs" errors="0" failures="0" skipped="0" timestamp="2024-02-21T15:05:12" time="3.043" tests="5">
+    <testcase classname="Blogs GET /api/blogs should GET all the blogs" name="Blogs GET /api/blogs should GET all the blogs" time="0.154">
     </testcase>
-    <testcase classname="Blogs POST /api/blogs should POST a new blog" name="Blogs POST /api/blogs should POST a new blog" time="0.049">
+    <testcase classname="Blogs POST /api/blogs should POST a new blog" name="Blogs POST /api/blogs should POST a new blog" time="0.078">
     </testcase>
-    <testcase classname="Blogs GET /api/blogs/:id should GET a blog by the id" name="Blogs GET /api/blogs/:id should GET a blog by the id" time="0.019">
+    <testcase classname="Blogs GET /api/blogs/:id should GET a blog by the id" name="Blogs GET /api/blogs/:id should GET a blog by the id" time="0.029">
     </testcase>
-    <testcase classname="Blogs PUT /api/blogs/:id should UPDATE a blog given the id" name="Blogs PUT /api/blogs/:id should UPDATE a blog given the id" time="0.026">
+    <testcase classname="Blogs PUT /api/blogs/:id should UPDATE a blog given the id" name="Blogs PUT /api/blogs/:id should UPDATE a blog given the id" time="0.071">
     </testcase>
-    <testcase classname="Blogs DELETE /api/blogs/:id should DELETE a blog given the id" name="Blogs DELETE /api/blogs/:id should DELETE a blog given the id" time="0.018">
+    <testcase classname="Blogs DELETE /api/blogs/:id should DELETE a blog given the id" name="Blogs DELETE /api/blogs/:id should DELETE a blog given the id" time="0.028">
     </testcase>
   </testsuite>
 </testsuites>

@@ -1,5 +1,6 @@
 // Import necessary modules
 const express = require("express")
+const path = require("path")
 const blogRoute = require("./routes/blogRoutes")
 const mongoose = require("mongoose")
 
@@ -7,14 +8,17 @@ const mongoose = require("mongoose")
 const app = express()
 
 // Define the URI for MongoDB, using the environment variable if available, else default to a local database
-const URI = process.env.MONGODB_URI || "mongodb://localhost/CRUD"
+const URI = process.env.MONGODB_URI || "mongodb://localhost:27017/BlogDB"
 
 // Define the port for the server, using the environment variable if available, else default to port 1000
-const PORT = process.env.PORT || 1000
+const PORT = process.env.PORT || 500
 
 // Middleware: Enable parsing of JSON data in requests
 app.use(express.json())
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  });
 // Middleware: Enable Route 
 app.use("/api/blogs", blogRoute)
 

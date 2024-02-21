@@ -17,4 +17,4 @@ const BlogSchema = Schema({
 
 // Create a Mongoose model named "Blog" based on the defined schema
 // This model will be used to interact with the MongoDB collection named "blogs"
-module.exports = mongoose.model("Blog", BlogSchema)
+module.exports = mongoose.model("BlogDB", BlogSchema)

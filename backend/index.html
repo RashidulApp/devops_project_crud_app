@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog CRUD App</title>
+ <style>
+    * {
+  box-sizing: border-box; /* Modern, consistent box model */
+}
+
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; /* Fit viewport vertically */
+  padding: 20px; /* Add some padding around content */
+}
+
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.blog-list {
+  width: 100%; /* Stretch to full width */
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* No top/bottom padding */
+}
+
+.blog-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff; /* Light background */
+  border: 1px solid #ddd; /* Subtle border */
+  border-radius: 4px; /* Rounded corners */
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.blog-item h3 {
+  font-size: 1.2em; /* Slightly larger headline */
+  margin-bottom: 10px;
+}
+
+.blog-item img {
+  max-width: 100%;
+  /* Set max-width to handle various image sizes */
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.blog-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto; /* Align at bottom */
+}
+
+.blog-actions button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #eee; /* Consistent base color */
+  cursor: pointer;
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.2s ease-in-out; /* Hover effect */
+}
+
+.blog-actions button:hover {
+  background-color: #ddd; /* Lighter on hover */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.new-blog-form {
+  display: flex;
+  flex-direction: column;
+  width: 500px; /* Fixed width for better layout */
+  margin: 0 auto; /* Center horizontally */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+ </style>
+</head>
+<body>
+  <h1>Blog Manager</h1>
+  <div id="blog-list"></div>
+  <form id="new-blog-form">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+    <br>
+    <label for="body">Body:</label>
+    <textarea id="body" name="body" required></textarea>
+    <br>
+    <label for="image">Image URL:</label>
+    <input type="url" id="image" name="image">
+    <br>
+    <button type="submit">Create</button>
+  </form>
+  <script>
+    const blogList = document.getElementById('blog-list');
+const newBlogForm = document.getElementById('new-blog-form');
+
+// Local storage simulation (replace with MongoDB implementation)
+const blogs = JSON.parse(localStorage.getItem('blogs')) || [];
+
+// Display blogs
+function displayBlogs() {
+  blogList.innerHTML = '';
+  blogs.forEach(blog => {
+    const blogItem = document.createElement('div');
+    blogItem.classList.add('blog-item');
+    blogItem.innerHTML = `<h3>${blog.title}</h3>
+      <p>${blog.body}</p>
+      <img src="${blog.image}" alt="${blog.title}" width="200">
+      <div class="blog-actions">
+        <button data-id="${blog.id}">Edit</button>
+        <button data-id="${blog.id}">Delete</button>
+      </div>`;
+    blogList.appendChild(blogItem);
+  });
+}
+
+displayBlogs();
+
+// Create new blog
+newBlogForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const title = document.getElementById('title').value;
+  const body = document.getElementById('body').value;
+  const image = document.getElementById('image').value;
+
+  const newBlog = {
+    id: Math.random().toString(36).substr(2, 9),
+    title,
+    body,
+    image,
+  };
+
+  blogs.push(newBlog);
+  localStorage.setItem('blogs', JSON.stringify(blogs));
+
+  displayBlogs();
+  newBlogForm.reset();
+});
+
+// Implement functions for edit and delete using MongoDB/API interaction
+// Remember to replace local storage simulation with database access
+
+// Example edit function (needs integration with database):
+function editBlog(id) {
+  // Find blog by id
+  const blogIndex = blogs.findIndex(blog => blog.id === id);
+
+  // Open an edit form with pre-filled data
+  // ...
+}
+
+// Example delete function (needs integration with database):
+function deleteBlog(id) {
+  // Remove blog from array
+  const newBlogs = blogs.filter(blog => blog.id !== id);
+  localStorage.setItem('blogs', JSON.stringify(newBlogs));
+
+  displayBlogs();
+}
+
+// Add event listeners for edit and delete buttons
+// ...
+
+
+  </script>
+</body>
+</html>
